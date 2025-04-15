@@ -99,7 +99,46 @@
 
 <body>
 
-    <div style="
+    <!-- Botão Toggle com ícone -->
+    <div id="music-toggle" onclick="togglePlayer()"
+        style="position: fixed; top: 20px; right: 20px; background: #4caf50; color: white; padding: 10px 14px; border-radius: 50px; cursor: pointer; z-index: 10000; font-size: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: background 0.3s;">
+        🔊
+    </div>
+
+    <!-- Player com animação slide -->
+    <div id="music-player"
+        style="position: fixed; top: 70px; right: 20px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999; transform: translateY(-20px); opacity: 0; pointer-events: none; transition: all 0.4s ease;">
+        <audio controls style="width: 240px;">
+            <source src="audio_maconha.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+
+    <script>
+        let isOpen = false;
+
+        function togglePlayer() {
+            const player = document.getElementById("music-player");
+            const toggle = document.getElementById("music-toggle");
+
+            isOpen = !isOpen;
+
+            if (isOpen) {
+                player.style.transform = "translateY(0)";
+                player.style.opacity = "1";
+                player.style.pointerEvents = "auto";
+                toggle.innerHTML = "🔇";
+            } else {
+                player.style.transform = "translateY(-20px)";
+                player.style.opacity = "0";
+                player.style.pointerEvents = "none";
+                toggle.innerHTML = "🔊";
+            }
+        }
+    </script>
+
+
+    <!--  <div style="
     position: fixed;
     top: 20px;
     right: 20px;
@@ -117,7 +156,7 @@
             <source src="https://weed-juice.github.io/wj_growbaixarenda/audio_maconha.mp3" type="audio/mpeg">
             Seu navegador não suporta o elemento de áudio.
         </audio>
-    </div>
+    </div> -->
 
     <div class="bg-image"></div>
 
